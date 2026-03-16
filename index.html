@@ -54,14 +54,13 @@
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">Demonstration for IMPACT</h1>
               <h2 class="subtitle has-text-centered"> <!-- Adjusted font size and alignment -->
-                MSH-MCCT is a multi-source human-in-the-loop experimental platform for connected and autonomous vehicles in mixed traffic flow.
+                IMPACT: Interactive Mixed-digital-twin Paradigm for Advanced Cooperative vehicle-infrastructure Testing
               </h2>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
                 <a href="https://scholar.google.com/citations?user=ncDpC9gAAAAJ&hl=en" target="_blank">Jianghong Dong</a><sup>1</sup>,</span>
-                <span class="author-block">
-                  <a href="https://wjiawei.com" target="_blank">Jiawei Wang</a><sup>2,*</sup>,</span>
+                
                   <span class="author-block">
                     <a href="" target="_blank">Chunying Yang</a><sup>1</sup>
                   </span>
@@ -73,19 +72,18 @@
                   </span>
                   <br>
                   <span class="author-block">
-                    <a href="https://scholar.google.com/citations?user=7XuJsS8AAAAJ&hl=en" target="_blank">Qing Xu</a><sup>1</sup>,
+                    <a href="https://scholar.google.com/citations?user=7XuJsS8AAAAJ&hl=en" target="_blank">Qing Xu</a><sup>1,*</sup>,
                   </span>
                   <span class="author-block">
                     <a href="https://scholar.google.com/citations?user=5mUoFN0AAAAJ&hl=en" target="_blank">Jianqiang Wang</a><sup>1</sup>,
                   </span>
                   <span class="author-block">
-                    <a href="https://scholar.google.com/citations?user=x58fnLQAAAAJ&hl=en" target="_blank">Keqiang Li</a><sup>1,*</sup>
+                    <a href="https://scholar.google.com/citations?user=x58fnLQAAAAJ&hl=en" target="_blank">Keqiang Li</a><sup>1</sup>
                   </span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
                     <span class="author-block"><sup>1</sup>Tsinghua University</span>
-                    <span class="author-block"><sup>2</sup>University of Michigan</span>
                   </div>
 
             </div>
@@ -101,34 +99,14 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <h2 class="title is-3" style="text-align: center;">Experiment A: traffic wave scenario</h2>
+      <h2 class="title is-3" style="text-align: center;">Experiment: Human-injected Brake Perturbations.</h2>
       <video poster="" id="tree" autoplay controls muted  playsinline loop height="100%">
         <!-- Your video here -->
-        <source src="https://github.com/HONGcalmJIN/MSH-MCCT-assets/assets/52435441/440c34bf-39bb-4425-8a4d-d1a5498c42a6"
+        <source src="static/videos/exp_bra0807-partC.mp4"
         type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
-        In Experiment A, the CACC controllers enable the CAVs to dampen the velocity fluctuation of the head vehicle, preventing disturbances 
-        from amplifying within the platoon, while the human drivers are amplifying these fluctuations, especially the last one.
-      </h2>
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
-
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <h2 class="title is-3" style="text-align: center;">Experiment B: safety-critical scenario</h2>
-      <video poster="" id="tree" controls muted height="100%">
-        <!-- Your video here -->
-        <source src="https://github.com/HONGcalmJIN/MSH-MCCT-assets/assets/52435441/3773b9e4-b290-4ba3-a1f6-727e1b15685a"
-        type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-      In Experiment B, the CAVs distributed in the platoon mitigate the amplification of fluctuations caused by the head vehicle's sudden braking.
-      In particular, since all the collisions involve at least one virtual vehicle, no actual damage is incurred by any vehicle.
+       Human operator induces head-vehicle braking disturbance via the MR HMD.
       </h2>
     </div>
   </div>
@@ -143,7 +121,13 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-In the emerging mixed traffic environments, Connected and Autonomous Vehicles (CAVs) have to interact with surrounding human-driven vehicles (HDVs). This paper introduces MSH-MCCT (Multi-Source Human-in-the-Loop Mixed Cloud Control Testbed), a novel CAV testbed that captures complex interactions between various CAVs and HDVs. Utilizing the Mixed Digital Twin concept, which combines Mixed Reality with Digital Twin, MSH-MCCT integrates physical, virtual, and mixed platforms, along with multi-source control inputs. Bridged by the mixed platform, MSH-MCCT allows human drivers and CAV algorithms to operate both physical and virtual vehicles within multiple fields of view. Particularly, this testbed facilitates the coexistence and real-time interaction of physical and virtual CAVs & HDVs, significantly enhancing the experimental flexibility and scalability. Experiments on vehicle platooning in mixed traffic showcase the potential of MSH-MCCT to conduct CAV testing with multi-source real human drivers in the loop through driving simulators of diverse fidelity. The videos for the experiments are available at https://dongjh20.github.io/MSH-MCCT.          
+Sufficient testing under corner cases is critical for the long-term operation of vehicle-infrastructure cooperation systems (VICS). 
+However, existing corner-case generation methods are primarily AI-driven, and VICS testing under corner cases is typically limited to simulation. 
+In this paper, we introduce an L5 ``Interactable'' level to the VICS digital twin (VICS-DT) taxonomy, extending beyond the conventional L4 ``Optimizable'' level.
+We further propose an L5-level VICS testing framework, IMPACT (Interactive Mixed-digital-twin Paradigm for Advanced Cooperative vehicle-infrastructure Testing). 
+By enabling direct human interactions with VICS entities, IMPACT incorporates highly uncertain and unpredictable human behaviors into the testing loop, naturally generating high-quality corner cases that complement AI-based methods. 
+Furthermore, the mixedDT-enabled ``Physical-Virtual Action Interaction'' facilitates safe VICS testing under corner cases, incorporating real-world environments and entities rather than purely in simulation. 
+Finally, we implement IMPACT on the I-VIT (Interactive Vehicle-Infrastructure Testbed), and experiments demonstrate its effectiveness.          
           </p>
         </div>
       </div>
@@ -152,71 +136,6 @@ In the emerging mixed traffic environments, Connected and Autonomous Vehicles (C
 </section> 
 <!-- End paper abstract -->
 
-<!-- Single Image with Title -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3" style="max-width: 80%; margin: auto; text-align: center;">Detailed schematic</h2> <!-- Title for the image -->
-      <br>
-      <div class="image-container has-text-centered" style="max-width: 80%; margin: auto;">
-        <!-- Your image here with adjusted width -->
-        <img src="static/images/MSH-snapshotV2.jpg" alt="Descriptive Alt Text" style="height: auto;"/>
-        
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- Single Image with Title -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3" style="max-width: 70%; margin: auto; text-align: center;">Detailed mode of operation</h2> <!-- Title for the image -->
-      <br>
-      <div class="image-container has-text-centered" style="max-width: 70%; margin: auto;">
-        <!-- Your image here with adjusted width -->
-        <img src="static/images/formation.jpg" alt="Descriptive Alt Text" style="height: auto;"/>
-        
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Related work -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3" style="max-width: 70%; margin: auto; text-align: center;">MSH-MCCT-based work</h2> <!-- Title for the image -->
-      <br>
-      <!-- maybe a little similar to current work -->
-      <!-- <h4 class="title is-size-5" style="max-width: 70%; margin: auto; text-align: left;">1. <a href="https://dongjh20.github.io/MCCT" target="_blank">Mixed cloud control testbed for vehicle-road-cloud integration system</a></h4>
-      <br>
-      <h4 class="subtitle has-text-justified" style="max-width: 70%; margin: auto; text-align: left;">Dong J, Xu Q, Wang J, et al. Mixed cloud control testbed: Validating vehicle-road-cloud integration via mixed digital twin[J]. IEEE Transactions on Intelligent Vehicles, 2023. <a href="https://arxiv.org/abs/2212.02007" target="_blank">[paper link]</a> <a href="https://dongjh20.github.io/MCCT" target="_blank">[video link]</a></h4>
-      <br> -->
-      
-      <h4 class="title is-size-5" style="max-width: 70%; margin: auto; text-align: left;">1. <a href="https://github.com/soc-ucsd/DeeP-LCC" target="_blank">Data-enabled predictive leading cruise control in mixed traffic</a></h4>
-      <br>
-      <h4 class="subtitle has-text-justified" style="max-width: 70%; margin: auto; text-align: left;">Wang J, Zheng Y, Dong J, et al. Implementation and experimental validation of data-driven predictive control for dissipating stop-and-go waves in mixed traffic[J]. IEEE Internet of Things Journal, 2023. <a href="https://arxiv.org/abs/2204.03747" target="_blank">[paper link]</a> <a href="https://www.youtube.com/watch?v=ZZ2cWhapqpc" target="_blank">[video link]</a></h4>
-      <br>
-
-      <h4 class="title is-size-5" style="max-width: 70%; margin: auto; text-align: left;">2. <a href="https://ieeexplore.ieee.org/abstract/document/11264470" target="_blank">Mixed platoon control under noise and attacks</a></h4>
-      <br>
-      <h4 class="subtitle has-text-justified" style="max-width: 70%; margin: auto; text-align: left;">Li S, Chen C, Zheng H, et al. Mixed Platoon Control Under Noise and Attacks: Robust Data-Driven Predictive Control and Human-in-the-Loop Validation[J]. IEEE Transactions on Intelligent Transportation Systems, 2025. <a href="https://arxiv.org/abs/2411.13924" target="_blank">[paper link]</a> </h4>
-      <br>
-
-      <h4 class="title is-size-5" style="max-width: 70%; margin: auto; text-align: left;">3. <a href="https://ieeexplore.ieee.org/abstract/document/11095288" target="_blank">Robust explicit data-driven predictive control for mixed platoons</a></h4>
-      <br>
-      <h4 class="subtitle has-text-justified" style="max-width: 70%; margin: auto; text-align: left;">Li S, Zhou J, Wang J, et al. Robust explicit data-driven predictive control for mixed vehicle platoons[J]. IEEE Internet of Things Journal, 2025. </h4>
-      <br>
-
-      <h4 class="title is-size-5" style="max-width: 70%; margin: auto; text-align: left;">4. <a href="https://github.com/cmc623/Formation-control-experiments" target="_blank">Multi-vehicle coordinated formation control in multiple lanes</a></h4>
-      <br>
-      <h4 class="subtitle has-text-justified" style="max-width: 70%; margin: auto; text-align: left;">Cai M, Xu Q, Yang C, et al. Experimental Validation of Multi-Lane Formation Control for Connected and Automated Vehicles[C]//2023 IEEE International Conference on Unmanned Systems (ICUS). IEEE, 2023: 1267-1273. <a href="https://arxiv.org/abs/2112.00312" target="_blank">[paper link]</a> <a href="https://github.com/cmc623/Formation-control-experiments" target="_blank">[video link]</a></h4>
-      <br>
-    </div>
-  </div>
-</section>
 
 <!--BibTex citation 
   <section class="section" id="BibTeX">
@@ -237,7 +156,7 @@ In the emerging mixed traffic environments, Connected and Autonomous Vehicles (C
           <p class="columns is-centered">
             This page was built using the&nbsp;<a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
           </p>
-          <p class="columns is-centered" >&copy;2025 Jianghong Dong</p>
+          <p class="columns is-centered" >&copy;2026 Jianghong Dong</p>
         </div>
       </div>
     </div>
@@ -251,7 +170,7 @@ In the emerging mixed traffic environments, Connected and Autonomous Vehicles (C
       
       <div class="image-container has-text-centered" style="max-width: 60%; margin: auto;">
         <!-- Your image here with adjusted width -->
-        <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=lrw-A1Y_vAH3_dUw5lNQPHSpmujIgHtJ0oAeg95Gq7Q&cl=ffffff&w=a"></script>      </div>
+        <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=V_AY1CFb6OurYiJouqlnlTFh4f_r60fzNnqVb-2C_nc&cl=ffffff&w=a"></script>     </div>
     </div>
   </div>
 </section>
@@ -259,24 +178,23 @@ In the emerging mixed traffic environments, Connected and Autonomous Vehicles (C
   
 <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
 
-<!-- Default Statcounter code for MSH-MCCT
-https://dongjh20.github.io/MSH-MCCT -->
+<!-- Default Statcounter code for IMPACT
+https://dongjh20.github.io/IMPACT/ -->
 <script type="text/javascript">
-  var sc_project=12959948; 
-  var sc_invisible=0; 
-  var sc_security="a89b97a4"; 
-  var scJsHost = "https://";
-  document.write("<sc"+"ript type='text/javascript' src='" +
-  scJsHost+
-  "statcounter.com/counter/counter.js'></"+"script>");
-  </script>
-  <noscript><div class="statcounter"><a title="Web Analytics
-  Made Easy - Statcounter" href="https://statcounter.com/"
-  target="_blank"><img class="statcounter"
-  src="https://c.statcounter.com/12959948/0/a89b97a4/0/"
-  alt="Web Analytics Made Easy - Statcounter"
-  referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-  <!-- End of Statcounter Code -->
+var sc_project=13210943; 
+var sc_invisible=1; 
+var sc_security="84150801"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="free web stats"
+href="https://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="https://c.statcounter.com/13210943/0/84150801/1/"
+alt="free web stats"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->
 
 <!-- End of Statcounter Code -->
 
