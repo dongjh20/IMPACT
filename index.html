@@ -43,6 +43,16 @@
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>
 </head>
 <body>
 
@@ -114,38 +124,146 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <h2 class="title is-3" style="text-align: center;">Experiment: Human-injected Brake Perturbations</h2>
+      <h2 class="title is-3" style="text-align: center;">Experiment: Human-Injected Brake Perturbations</h2>
       <video poster="" id="tree" controls muted  playsinline loop height="100%">
         <!-- Your video here -->
         <source src="static/videos/exp_bra0807-partCV3.mp4"
         type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
-       Human operator injects head-vehicle braking disturbance via the MR HMD (Mixed Reality Head-Mounted Display).
+       Human operator injects head-vehicle braking disturbance via the MR HMD (Mixed Reality head-mounted display).
       </h2>
+       <div class="motiv-contrib-block">
+    <div class="contrib-list">
+      <div class="contrib-accordion">
+        <div class="contrib-item contrib-item-clickable" onclick="toggleContribItem(this)">
+          <span class="contrib-index"><i class="fas fa-chart-bar" style="font-size:1.3rem; color:#87CEEB;"></i></span>
+          <div class="contrib-content">
+            <p class="contrib-heading">Experimental Results <i class="fas fa-chevron-down motiv-play-hint motiv-chevron"></i><span class="motiv-click-hint">click</span></p>
+            <p>Click to view the velocity and inter-vehicle distance plots.</p>
+          </div>
+        </div>
+        <div class="motiv-inline-video">
+          <div class="results-grid">
+            <div class="results-column">
+              <p class="results-label">Velocity</p>
+              <img src="static/images/brake-speed-partC.png" alt="Vehicle velocity plot">
+            </div>
+            <div class="results-column">
+              <p class="results-label">Inter-Vehicle Distance</p>
+              <img src="static/images/brake-distance-partC.png" alt="Inter-vehicle distance plot">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
     </div>
   </div>
 </section>
 <!-- End teaser video -->
+
+<!-- Comparative experiments -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-3 has-text-centered">Comparative Experiments</h2>
+      <div class="content has-text-justified">
+        <p>
+          In the comparative experiment, the platoon composition is kept identical to that shown in
+          &ldquo;Experimental Setup&rdquo;, except that: (1) all vehicles are virtual, resulting in a purely
+          simulation-based setup; and (2) the HDVs are controlled by an AI-driven car-following model rather
+          than real human drivers. Specifically, we adopt the pretrained long short-term memory (LSTM)-based
+          car-following model released as part of the FollowNet benchmark
+          (<a href="https://www.nature.com/articles/s41597-023-02718-7" target="_blank" rel="noopener noreferrer">Paper</a>;
+          <a href="https://github.com/HKUST-DRIVE-AI-LAB/FollowNet" target="_blank" rel="noopener noreferrer">Code</a>).
+          The model is trained on the widely used NGSIM dataset.
+        </p>
+      </div>
+
+      <div class="motiv-contrib-block">
+        <div class="contrib-list">
+          <div class="contrib-accordion">
+            <div class="contrib-item contrib-item-clickable" onclick="toggleContribItem(this)">
+              <span class="contrib-index"><i class="fas fa-chart-line" style="font-size:1.3rem; color:#87CEEB;"></i></span>
+              <div class="contrib-content">
+                <p class="contrib-heading">Comparative Results <i class="fas fa-chevron-down motiv-play-hint motiv-chevron"></i><span class="motiv-click-hint">click</span></p>
+                <p>Click to compare the velocity and inter-vehicle distance plots under different vehicle configurations.</p>
+              </div>
+            </div>
+            <div class="motiv-inline-video">
+              <div class="comparison-tabs" role="tablist" aria-label="Vehicle configuration">
+                <button class="comparison-tab is-active" type="button" role="tab" aria-selected="true" data-comparison="mixed">Same Configuration</button>
+                <button class="comparison-tab" type="button" role="tab" aria-selected="false" data-comparison="pure-hdv">All HDVs: LSTM</button>
+                <button class="comparison-tab" type="button" role="tab" aria-selected="false" data-comparison="pure-cacc">All CAVs: CACC</button>
+              </div>
+
+              <div class="comparison-panel" data-comparison-panel="mixed" role="tabpanel">
+                <div class="results-grid">
+                  <div class="results-column">
+                    <p class="results-label">Velocity</p>
+                    <img src="static/images/mixed-speed-partC.png" alt="Velocity plot for the same vehicle configuration">
+                  </div>
+                  <div class="results-column">
+                    <p class="results-label">Inter-Vehicle Distance</p>
+                    <img src="static/images/mixed-distance-partC.png" alt="Inter-vehicle distance plot for the same vehicle configuration">
+                  </div>
+                </div>
+              </div>
+
+              <div class="comparison-panel" data-comparison-panel="pure-hdv" role="tabpanel" hidden>
+                <div class="results-grid">
+                  <div class="results-column">
+                    <p class="results-label">Velocity</p>
+                    <img src="static/images/pure-hdv-speed-partC.png" alt="Velocity plot for all HDVs controlled by LSTM">
+                  </div>
+                  <div class="results-column">
+                    <p class="results-label">Inter-Vehicle Distance</p>
+                    <img src="static/images/pure-hdv-distance-partC.png" alt="Inter-vehicle distance plot for all HDVs controlled by LSTM">
+                  </div>
+                </div>
+              </div>
+
+              <div class="comparison-panel" data-comparison-panel="pure-cacc" role="tabpanel" hidden>
+                <div class="results-grid">
+                  <div class="results-column">
+                    <p class="results-label">Velocity</p>
+                    <img src="static/images/pure-cacc-speed-partC.png" alt="Velocity plot for all CAVs controlled by CACC">
+                  </div>
+                  <div class="results-column">
+                    <p class="results-label">Inter-Vehicle Distance</p>
+                    <img src="static/images/pure-cacc-distance-partC.png" alt="Inter-vehicle distance plot for all CAVs controlled by CACC">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End comparative experiments -->
 
 <!-- Teaser video-->
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
       <h2 class="title is-3;" style="text-align: center;">More Interactive VICS Testing Experiments</h2>
-      <h2 class="title is-4" style="margin-top: 3rem; text-align: center;">1. Human-triggered Obstacle Spawning</h2>
+      <h2 class="title is-4" style="margin-top: 3rem; text-align: center;">1. Human-Triggered Obstacle Injection</h2>
       <video poster="" id="tree" controls muted  playsinline loop height="100%">
         <!-- Your video here -->
         <source src="static/videos/Obstacle-Spawning.mp4"
         type="video/mp4">
       </video>
-      <h2 class="title is-4" style="margin-top: 3rem; text-align: center;">2. Human-triggered Emergency Obstacle Avoidance: Success</h2>
+      <h2 class="title is-4" style="margin-top: 3rem; text-align: center;">2. Human-Triggered Emergency Obstacle Avoidance: Success</h2>
       <video poster="" id="tree"  controls muted  playsinline loop height="100%">
         <!-- Your video here -->
         <source src="static/videos/obs-avoidance-success.mp4"
         type="video/mp4">
       </video>
-      <h2 class="title is-4" style="margin-top: 3rem; text-align: center;">3. Human-triggered Emergency Obstacle Avoidance: Failure</h2>
+      <h2 class="title is-4" style="margin-top: 3rem; text-align: center;">3. Human-Triggered Emergency Obstacle Avoidance: Failure</h2>
       <video poster="" id="tree"  controls muted  playsinline loop height="100%">
         <!-- Your video here -->
         <source src="static/videos/obs-avoidance-fail.mp4"
@@ -177,7 +295,7 @@
         type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
-       The vehicle is physical and controlled by a human via a game controller, directly introducing stochastic human behaviors alongside real-world vehicle state update rates and precision, while the streetlights are virtual to avoid energy costs caused by frequent switching.
+       The vehicle is physical and controlled by a human via a driving simulator, directly introducing realistic human driving behavior alongside real-world vehicle state update rates and precision, while the streetlights are virtual to avoid the energy consumption associated with frequent switching.
       </h2>
       <h2 class="title is-4" style="margin-top: 3rem; text-align: center;">3. Smart Barrier Gate: Physical Gate + Physical Vehicle (Traditional Way)</h2>
       <video poster="" id="tree"  controls muted  playsinline loop height="100%">
@@ -202,6 +320,38 @@
   </div>
 </section>
 <!-- End teaser video -->
+
+<!-- Mathematical notation example -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Mathematical Notation Example</h2>
+        <div class="box">
+          <div class="content has-text-justified">
+            <p>
+              For vehicle \(i\), let \(x_i(t)\) denote its longitudinal position and
+              \(v_i(t)=\dot{x}_i(t)\) its velocity. A compact car-following formulation can be written as
+            </p>
+            \[
+              \begin{aligned}
+                d_i(t) &amp;= x_{i-1}(t)-x_i(t)-L_{i-1},\\
+                e_i(t) &amp;= d_i(t)-d_0-hv_i(t),\\
+                a_i(t) &amp;= k_p e_i(t)+k_v\bigl(v_{i-1}(t)-v_i(t)\bigr).
+              \end{aligned}
+              \tag{1}
+            \]
+            <p>
+              Here, \(d_i(t)\) is the inter-vehicle distance, \(e_i(t)\) is the spacing error,
+              and \(a_i(t)\) is the commanded acceleration.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End mathematical notation example -->
 
 <!-- Paper abstract -->
 <section class="section hero is-light">
