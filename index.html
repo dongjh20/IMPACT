@@ -325,38 +325,6 @@
 </section>
 <!-- End teaser video -->
 
-<!-- Mathematical notation example -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3 has-text-centered">Mathematical Notation Example</h2>
-        <div class="box">
-          <div class="content has-text-justified">
-            <p>
-              For vehicle \(i\), let \(x_i(t)\) denote its longitudinal position and
-              \(v_i(t)=\dot{x}_i(t)\) its velocity. A compact car-following formulation can be written as
-            </p>
-            \[
-              \begin{aligned}
-                d_i(t) &amp;= x_{i-1}(t)-x_i(t)-L_{i-1},\\
-                e_i(t) &amp;= d_i(t)-d_0-hv_i(t),\\
-                a_i(t) &amp;= k_p e_i(t)+k_v\bigl(v_{i-1}(t)-v_i(t)\bigr).
-              \end{aligned}
-              \tag{1}
-            \]
-            <p>
-              Here, \(d_i(t)\) is the inter-vehicle distance, \(e_i(t)\) is the spacing error,
-              and \(a_i(t)\) is the commanded acceleration.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End mathematical notation example -->
-
 <!-- Paper abstract -->
 <section class="section hero is-light">
   <div class="container is-max-desktop">
@@ -409,6 +377,266 @@ Finally, we implement IMPACT on the I-VIT (Interactive Vehicle-Infrastructure Te
     </div>
   </div>
 </section>
+
+<!-- Latency sensitivity analysis -->
+<section class="section" id="latency-analysis">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Latency Sensitivity Analysis in I-VIT</h2>
+    <div class="content has-text-justified">
+      <p>
+        It is worth noting that the normal operation of the IMPACT framework and the I-VIT platform
+        relies on reliable, low-latency communication. Excessive communication delays or sustained
+        packet loss may destabilize the platform. To illustrate this issue, we conduct a latency
+        sensitivity analysis of a typical Cooperative Adaptive Cruise Control (CACC) platooning test. The results show that the
+        platoon loses closed-loop stability when the wireless communication delay between the cloud and
+        the vehicles exceeds \(1.46~\mathrm{s}\). Therefore, before conducting VICS tests on the I-VIT
+        platform, latency sensitivity analysis and latency measurements should be performed to verify
+        that the communication environment can support stable operation.
+      </p>
+      <p>
+        The complete analysis procedure is provided in <strong>the expandable panel below</strong>.
+        If the mathematical notation does not render correctly, please
+        <a href="#" aria-disabled="true" onclick="return false;">download the PDF version</a> for viewing.
+      </p>
+    </div>
+
+    <div class="motiv-contrib-block">
+      <div class="contrib-list">
+        <div class="contrib-accordion">
+          <div class="contrib-item contrib-item-clickable" onclick="toggleContribItem(this)">
+            <span class="contrib-index"><i class="fas fa-stopwatch" style="font-size:1.3rem; color:#87CEEB;"></i></span>
+            <div class="contrib-content">
+              <p class="contrib-heading">View the Complete Latency Sensitivity Analysis Procedure <i class="fas fa-chevron-down motiv-play-hint motiv-chevron"></i><span class="motiv-click-hint">click</span></p>
+              <p>Click to expand the complete theoretical analysis, frequency-domain results, and simulation validation.</p>
+            </div>
+          </div>
+
+          <div class="motiv-inline-video latency-analysis-panel">
+            <div class="box latency-analysis-box">
+              <div class="content has-text-justified latency-analysis-content">
+                <p>
+                  Latency sensitivity analysis is essential for identifying the operational boundaries
+                  of the system. Accordingly, we present a theoretical analysis below. Within the
+                  platform, the primary latency-sensitive link is the wireless communication between the
+                  physical vehicles and the cloud. Prior to the latency analysis, we first measured the
+                  step response of the scaled physical vehicle, as shown in Figure 1. The corresponding
+                  \(2\%\) settling time is \(15~\mathrm{ms}\).
+                </p>
+
+                <figure class="latency-figure latency-single-figure">
+                  <img src="static/images/jieyue-sudu-partC.png" alt="Velocity step response of the scaled physical vehicle" loading="lazy">
+                  <figcaption><strong>Figure 1.</strong> Velocity step response of the scaled physical vehicle.</figcaption>
+                </figure>
+
+                <p>
+                  Considering a representative platooning scenario consistent with the
+                  &ldquo;Experimental Setup&rdquo; presented at the beginning of this webpage, we analyze
+                  an eight-vehicle CAV platoon consisting entirely of scaled physical vehicles.
+                </p>
+                <p>
+                  I-VIT adopts a cloud-based control architecture in which the cloud aggregates the
+                  states of all vehicles, computes the complete CACC command for each following vehicle,
+                  and transmits the command to the corresponding scaled physical vehicle for execution.
+                  The measured latency of the motion capture system used to provide the physical-vehicle
+                  states to the cloud is \(5~\mathrm{ms}\), which is sufficiently small to be neglected
+                  in the present analysis. The cloud is therefore assumed to have access to the real-time
+                  platoon states. Since the computation time required to generate the CACC-based control
+                  commands is also negligible, the following analysis focuses on a constant
+                  cloud-to-vehicle command delay \(T_d\). Consistent with the experimental setup in the
+                  main text, the platoon considered in this analysis adopts a predecessor–leader
+                  following (PLF) topology.
+                </p>
+                <p>At time \(t\), the cloud computes the command for the \(i\)-th following vehicle as</p>
+                \[
+                  u_i^{\mathrm{c}}(t)
+                  = k_s\left[s_i(t)-s^\ast\right]
+                  + k_l\left[v_1(t)-v_i(t)\right]
+                  + k_f\left[v_{i-1}(t)-v_i(t)\right],
+                \]
+                <p>
+                  where \(k_s=0.10\), \(k_l=0.50\), \(k_f=0.50\), and
+                  \(s^\ast=7.89~\mathrm{m}\). Because the physical vehicle executes the cloud-generated
+                  command after the downlink delay, the actual control input applied at time \(t\) is
+                </p>
+                \[
+                  u_i(t)=u_i^{\mathrm{c}}(t-T_d).
+                \]
+                <p>Equivalently,</p>
+                \[
+                  u_i(t)
+                  = k_s\left[s_i(t-T_d)-s^\ast\right]
+                  + k_l\left[v_1(t-T_d)-v_i(t-T_d)\right]
+                  + k_f\left[v_{i-1}(t-T_d)-v_i(t-T_d)\right].
+                \]
+                <p>
+                  Accordingly, the delayed quantities in the above expression arise from the delayed
+                  execution of the complete cloud-generated command, rather than from delayed local
+                  sensing or delayed access to individual vehicle states. The longitudinal actuation
+                  dynamics are approximated by a first-order system
+                  \(\tau\dot{a}_i+a_i=u_i\). Given the measured \(2\%\) settling time of
+                  \(15~\mathrm{ms}\), the corresponding actuator time constant is
+                  \(\tau\approx0.003834~\mathrm{s}\).
+                </p>
+
+                <h3 class="title is-5 latency-analysis-heading">1. Closed-Loop Stability Analysis</h3>
+                <p>
+                  Closed-loop stability concerns whether the state of each vehicle eventually converges
+                  after the vehicle is subjected to a disturbance. By linearizing around the equilibrium
+                  and applying the Laplace transform, the characteristic equation associated with each
+                  following vehicle is
+                </p>
+                \[
+                  D(s,T_d)
+                  = s^2(\tau s+1)
+                  + e^{-sT_d}\left[k_s+(k_l+k_f)s\right]
+                  = 0.
+                \]
+                <p>
+                  To determine the admissible communication delay, we consider the first imaginary-axis
+                  crossing by setting \(s=j\omega\). The magnitude condition of the characteristic
+                  equation is
+                </p>
+                \[
+                  \omega^4\left(1+\tau^2\omega^2\right)
+                  = k_s^2+(k_l+k_f)^2\omega^2.
+                \]
+                <p>
+                  Substituting the adopted parameters and solving this equation yields the cross-over
+                  frequency \(\omega_{\mathrm{cl}}\approx1.005~\mathrm{rad/s}\). The corresponding
+                  closed-loop delay margin is
+                </p>
+                \[
+                  T_{d,\mathrm{cl}}
+                  =
+                  \frac{
+                    \tan^{-1}\left(\frac{(k_l+k_f)\omega_{\mathrm{cl}}}{k_s}\right)
+                    -\tan^{-1}\left(\tau\omega_{\mathrm{cl}}\right)
+                  }{\omega_{\mathrm{cl}}}
+                  \approx1.46~\mathrm{s}.
+                \]
+                <p>
+                  Therefore, the closed-loop system of any individual vehicle remains internally stable
+                  when \(\boxed{T_d&lt;1.46~\mathrm{s}}\). Figure 2(a) shows the Bode phase plots of the
+                  open-loop transfer function used to evaluate closed-loop stability under different
+                  cloud-to-vehicle command delays. The delay introduces additional phase lag without
+                  changing the gain crossover frequency, and the phase reaches \(-180^\circ\) at
+                  \(T_d\approx1.46~\mathrm{s}\), defining the closed-loop stability limit.
+                </p>
+
+                <figure class="latency-figure">
+                  <div class="results-grid">
+                    <div class="results-column">
+                      <p class="results-label">(a) Closed-Loop Stability</p>
+                      <img src="static/images/CACC_closed_loop.png" alt="Bode phase plot for closed-loop stability analysis" loading="lazy">
+                    </div>
+                    <div class="results-column">
+                      <p class="results-label">(b) String Stability</p>
+                      <img src="static/images/CACC_string_stability.png" alt="Bode magnitude plot for string-stability analysis" loading="lazy">
+                    </div>
+                  </div>
+                  <figcaption>
+                    <strong>Figure 2.</strong> Frequency-domain analysis of (a) closed-loop stability and
+                    (b) spacing-error string stability of the CACC platoon under different
+                    cloud-to-vehicle communication delays.
+                  </figcaption>
+                </figure>
+
+                <h3 class="title is-5 latency-analysis-heading">2. String-Stability Analysis</h3>
+                <p>
+                  String stability requires that spacing disturbances are attenuated rather than
+                  amplified along the platoon. The spacing-error propagation between consecutive vehicles
+                  is governed by \(E_{i+1}(s)=A(s,T_d)E_i(s)\), where the transfer function is
+                </p>
+                \[
+                  A(s,T_d)
+                  =
+                  \frac{
+                    e^{-sT_d}(k_s+k_fs)
+                  }{
+                    s^2(\tau s+1)
+                    +e^{-sT_d}\left[k_s+(k_l+k_f)s\right]
+                  }.
+                \]
+                <p>
+                  Accordingly, spacing-error string stability requires
+                  \(\sup_{\omega\geq0}\left|A(j\omega,T_d)\right|\leq1\). Because
+                  \(A(0,T_d)=1\), the critical delay corresponds to the first nonzero frequency at which
+                  the magnitude reaches unity. This critical boundary is obtained by jointly solving
+                </p>
+                \[
+                  \left|A(j\omega,T_d)\right|=1
+                  \quad\text{and}\quad
+                  \frac{\partial\left|A(j\omega,T_d)\right|}{\partial\omega}=0.
+                \]
+                <p>
+                  Solving these equations yields the critical frequency
+                  \(\omega_{\mathrm{ss}}\approx1.306~\mathrm{rad/s}\) and the corresponding
+                  string-stability delay margin
+                </p>
+                \[
+                  T_{d,\mathrm{ss}}\approx0.87~\mathrm{s}.
+                \]
+                <p>
+                  When \(0.87~\mathrm{s}&lt;T_d&lt;1.46~\mathrm{s}\), individual vehicles remain stable,
+                  but disturbances may be amplified towards the tail of the platoon, since
+                  \(E_8(s)/E_2(s)=A^6(s,T_d)\). Therefore, spacing-error string stability for the entire
+                  platoon requires \(\boxed{T_d\leq0.87~\mathrm{s}}\). Figure 2(b) shows the Bode
+                  magnitude plots of the inter-vehicle spacing-error propagation transfer function. The
+                  propagation gain reaches the \(0~\mathrm{dB}\) boundary at
+                  \(T_d\approx0.87~\mathrm{s}\), beyond which spacing errors are amplified along the
+                  platoon. Therefore, spacing-error string stability imposes a more restrictive delay
+                  requirement than closed-loop stability.
+                </p>
+
+                <figure class="latency-figure">
+                  <div class="results-grid">
+                    <div class="results-column">
+                      <p class="results-label">Velocity Profiles</p>
+                      <img src="static/images/delay-1500ms-speed-partC.png" alt="Velocity profiles under a 1.5-second communication delay" loading="lazy">
+                    </div>
+                    <div class="results-column">
+                      <p class="results-label">Inter-Vehicle Distance Profiles</p>
+                      <img src="static/images/delay-1500ms-distance-partC.png" alt="Inter-vehicle distance profiles under a 1.5-second communication delay" loading="lazy">
+                    </div>
+                  </div>
+                  <figcaption>
+                    <strong>Figure 3.</strong> Velocity and inter-vehicle spacing profiles of all virtual
+                    vehicles in the communication-delay sensitivity experiment. The vehicles are
+                    controlled by delayed CACC commands issued by the cloud, with a delay of
+                    \(1.5~\mathrm{s}\), which exceeds the theoretically derived closed-loop stability
+                    limit of \(1.46~\mathrm{s}\) for the platoon.
+                  </figcaption>
+                </figure>
+
+                <p>
+                  The measured communication latency
+                  between the scaled physical vehicles and the cloud on the I-VIT platform follows a
+                  Gaussian distribution with a mean of \(1.33~\mathrm{ms}\) and a standard deviation of
+                  \(0.66~\mathrm{ms}\). This latency is substantially lower than the derived thresholds
+                  and therefore fully satisfies the requirements for conducting CACC platooning
+                  experiments in terms of both closed-loop platoon stability and spacing-error string
+                  stability.
+                </p>
+                <p>
+                  However, when the communication latency exceeds a certain threshold, the platform can
+                  no longer operate stably. Taking the classical CACC platooning test as an example, we
+                  conducted platoon simulations under different communication delays using a longitudinal
+                  dynamics model calibrated to the response characteristics of the scaled physical
+                  vehicles. As shown in Figure 3, when the communication latency between the cloud and the
+                  vehicles reaches \(1.50~\mathrm{s}\), exceeding the closed-loop stability threshold of
+                  \(1.46~\mathrm{s}\), a velocity disturbance introduced by the head vehicle causes both
+                  the vehicle velocities and inter-vehicle spacings to diverge throughout the platoon.
+                  Consequently, the platform can no longer operate stably.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End latency sensitivity analysis -->
 
 <!--BibTex citation 
   <section class="section" id="BibTeX">
