@@ -49,10 +49,14 @@
         inlineMath: [['\\(', '\\)']],
         displayMath: [['\\[', '\\]']],
         tags: 'ams'
+      },
+      output: {
+        fontPath: 'static/mathjax/fonts/%%FONT%%-font',
+        displayOverflow: 'scroll'
       }
     };
   </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>
+  <script defer src="static/mathjax/tex-chtml.js"></script>
 </head>
 <body>
 
