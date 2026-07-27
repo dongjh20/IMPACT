@@ -518,6 +518,12 @@ hit.teaser-video-item {
   margin-top: 0.8rem;
 }
 
+.motiv-inline-video.is-static {
+  overflow: visible;
+  max-height: none;
+  margin-top: 0.8rem;
+}
+
 .motiv-inline-video video {
   width: 100%;
   display: block;

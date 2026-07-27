@@ -140,14 +140,13 @@
        <div class="motiv-contrib-block">
     <div class="contrib-list">
       <div class="contrib-accordion">
-        <div class="contrib-item contrib-item-clickable" onclick="toggleContribItem(this)">
+        <div class="contrib-item is-active">
           <span class="contrib-index"><i class="fas fa-chart-bar" style="font-size:1.3rem; color:#87CEEB;"></i></span>
           <div class="contrib-content">
-            <p class="contrib-heading">Experimental Results <i class="fas fa-chevron-down motiv-play-hint motiv-chevron"></i><span class="motiv-click-hint">click</span></p>
-            <p>Click to view the velocity and inter-vehicle distance plots.</p>
+            <p class="contrib-heading">Experimental Results</p>
           </div>
         </div>
-        <div class="motiv-inline-video">
+        <div class="motiv-inline-video is-static">
           <div class="results-grid">
             <div class="results-column">
               <p class="results-label">Velocity</p>
@@ -189,14 +188,13 @@
       <div class="motiv-contrib-block">
         <div class="contrib-list">
           <div class="contrib-accordion">
-            <div class="contrib-item contrib-item-clickable" onclick="toggleContribItem(this)">
+            <div class="contrib-item is-active">
               <span class="contrib-index"><i class="fas fa-chart-line" style="font-size:1.3rem; color:#87CEEB;"></i></span>
               <div class="contrib-content">
-                <p class="contrib-heading">Comparative Results <i class="fas fa-chevron-down motiv-play-hint motiv-chevron"></i><span class="motiv-click-hint">click</span></p>
-                <p>Click to compare the velocity and inter-vehicle distance plots under different vehicle configurations.</p>
+                <p class="contrib-heading">Comparative Results</p>
               </div>
             </div>
-            <div class="motiv-inline-video">
+            <div class="motiv-inline-video is-static">
               <div class="comparison-tabs" role="tablist" aria-label="Vehicle configuration">
                 <button class="comparison-tab is-active" type="button" role="tab" aria-selected="true" data-comparison="mixed">Same Configuration</button>
                 <button class="comparison-tab" type="button" role="tab" aria-selected="false" data-comparison="pure-hdv">All HDVs: LSTM</button>
@@ -394,7 +392,7 @@ Finally, we implement IMPACT on the I-VIT (Interactive Vehicle-Infrastructure Te
         that the communication environment can support stable operation.
       </p>
       <p>
-        The <strong>complete analysis procedure is provided in the expandable panel below</strong>.
+        The complete analysis procedure is provided below.
         If the mathematical notation does not render correctly, please
         <a href="https://github.com/dongjh20/IMPACT/blob/master/static/pdfs/latency-sensitivity-analysis.pdf?raw=1"
           download="latency-sensitivity-analysis.pdf">download the PDF version</a> for viewing.
@@ -404,15 +402,14 @@ Finally, we implement IMPACT on the I-VIT (Interactive Vehicle-Infrastructure Te
     <div class="motiv-contrib-block">
       <div class="contrib-list">
         <div class="contrib-accordion">
-          <div class="contrib-item contrib-item-clickable" onclick="toggleContribItem(this)">
+          <div class="contrib-item is-active">
             <span class="contrib-index"><i class="fas fa-stopwatch" style="font-size:1.3rem; color:#87CEEB;"></i></span>
             <div class="contrib-content">
-              <p class="contrib-heading">View the Complete Latency Sensitivity Analysis Procedure <i class="fas fa-chevron-down motiv-play-hint motiv-chevron"></i><span class="motiv-click-hint">click</span></p>
-              <p>Click to expand the complete theoretical analysis, frequency-domain results, and simulation validation.</p>
+              <p class="contrib-heading">Complete Latency Sensitivity Analysis Procedure</p>
             </div>
           </div>
 
-          <div class="motiv-inline-video latency-analysis-panel">
+          <div class="motiv-inline-video latency-analysis-panel is-static">
             <div class="box latency-analysis-box">
               <div class="content has-text-justified latency-analysis-content">
                 <p>

@@ -188,33 +188,6 @@ function toggleMotivCard(card, src) {
   videoEl.play().catch(() => {});
 }
 
-// Contribution item accordion
-function toggleContribItem(item) {
-  const accordion = item.closest('.contrib-accordion');
-  const panel = accordion.querySelector('.motiv-inline-video');
-  const videoEl = panel ? panel.querySelector('video') : null;
-  const isActive = item.classList.contains('is-active');
-
-  // Close all open contrib accordions
-  document.querySelectorAll('.contrib-accordion .contrib-item').forEach(i => {
-    i.classList.remove('is-active');
-    const p = i.closest('.contrib-accordion').querySelector('.motiv-inline-video');
-    if (p) {
-      const v = p.querySelector('video');
-      if (v) v.pause();
-      p.classList.remove('is-open');
-    }
-  });
-
-  if (!isActive) {
-    item.classList.add('is-active');
-    if (panel) panel.classList.add('is-open');
-    if (videoEl) {
-      videoEl.play().catch(() => {});
-    }
-  }
-}
-
 // Vehicle-configuration tabs inside comparative results
 document.addEventListener('click', function(event) {
   const tab = event.target.closest('.comparison-tab');
