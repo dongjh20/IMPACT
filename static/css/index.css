@@ -524,6 +524,12 @@ hit.teaser-video-item {
   margin-top: 0.8rem;
 }
 
+.visitor-map-static,
+.visitor-map-static * {
+  pointer-events: none !important;
+  cursor: default !important;
+}
+
 .motiv-inline-video video {
   width: 100%;
   display: block;
